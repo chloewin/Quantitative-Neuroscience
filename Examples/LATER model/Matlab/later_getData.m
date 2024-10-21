@@ -30,8 +30,8 @@ end
 % Data directory 
 % MODIFY THIS TO FIND THE DATA ON YOUR MACHINE
 if nargin < 2 || isempty(dataDirectory)
-    dataDirectory = fullfile('~jigold', 'Library', 'CloudStorage', ...
-        'Box-Box', 'NeuroCore', 'LATERdata');
+    dataDirectory = fullfile('/Users', 'chloewin', 'Documents', ...
+        'NGG6050', 'LATERdata');
 end
 
 % Value (in sec) to define upper RT bound for express saccades

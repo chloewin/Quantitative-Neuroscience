@@ -36,6 +36,7 @@
 %   outliers (including express saccades). See later_getData for details
 data = later_getData([], [], 0.2);
 RTs = data{1};
+reciprocalRTs = 1./RTs;
 clear data
 
 %%  2. Define the objective function
@@ -60,6 +61,7 @@ clear data
  
 % EXERCISE:
 % laterErrFcn = @(fits) <**YOUR OBJECTIVE FUNCTION HERE AS A FUNCTION OF FITS**>;
+laterErrFcn = @(fits) -sum(log(normpdf(reciprocalRTs, fits(1)./fits(2), 1./fits(2))));
 
 
 %%  3. Define initial conditions
@@ -77,7 +79,7 @@ lowerBounds = [0.001 0.001];
 upperBounds = [1000 1000]; 
 
 % EXERCISE:
-% initialValues = [<**ADD INITIAL VALUES HERE**>];
+initialValues = [mean(reciprocalRTs), std(reciprocalRTs)];
 
 %%  4. Run the fits
 % 
